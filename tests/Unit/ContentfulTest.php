@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Facades\Contentful;
 use Tests\TestCase;
 use Contentful\Delivery\Client as DeliveryClient;
 
@@ -19,6 +20,12 @@ class ContentfulTest extends TestCase
         $client = \App::make("contentful");
         $entries = $client->getEntries();
 
+        $this->assertNotEmpty($entries);
+    }
+
+    public function test_contentful_facade()
+    {
+        $entries = Contentful::getEntries();
         $this->assertNotEmpty($entries);
     }
 }
