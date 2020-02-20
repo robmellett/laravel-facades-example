@@ -11,6 +11,20 @@
 |
 */
 
+use Contentful\Delivery\Client as DeliveryClient;
+
 Route::get('/', function () {
-    return view('welcome');
+
+    $client = \App::make("contentful");
+    $entries = $client->getEntries();
+
+    // $access_token = config('contentful')['delivery.token'];
+    // $space_id = config("contentful")['delivery.space'];
+    // $environment = config("contentful")['delivery.environment'];
+
+    // $client = new DeliveryClient($access_token, $space_id, $environment);
+
+    dd($entries);
+
+    // return view('welcome');
 });
